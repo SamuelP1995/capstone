@@ -13,9 +13,9 @@ const app = express();
 app.use(express.json());
 
 
-app.use('/api/users', userRoutes)
-app.use('/api/patients', patientRoutes)
-app.use('api/histories', historyRoutes)
+app.use('/users', userRoutes)
+app.use('/patients', patientRoutes)
+app.use('/histories', historyRoutes)
 
 
 app.get("/", (req, res) => {
