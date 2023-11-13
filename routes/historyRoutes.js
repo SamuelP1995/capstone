@@ -8,8 +8,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    Controllers.historyController.createHistory(req.body, res)
+    Controllers.historyController.createHistory(req, res)
 })
 
+router.put('/:id', (req, res) => {
+    Controllers.historyController.updateHistory(req, res)
+})
+
+router.delete('/:id', (req, res) => {
+    Controllers.historyController.deleteHistory(req, res)
+})
 
 module.exports = router;
