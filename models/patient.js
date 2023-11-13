@@ -63,3 +63,22 @@ Patient.init({
 Patient.belongsTo(User);
 
 module.exports = Patient;
+
+
+
+
+
+
+
+
+
+// {
+//     "emsId": 1,
+//     "firstName": "Micheal",
+//     "lastName": "Myers",
+//     "address": "666 Hell Street",
+//     "city": "Lafayette",
+//     "state": "Louisiana",
+//     "zipcode": 66666
+//     "phone": 6666666
+// }

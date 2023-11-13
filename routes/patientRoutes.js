@@ -4,7 +4,7 @@ const Controllers = require("../controllers");
 
 
 router.get('/', (req, res) => {
-    Controllers.patientController.getPatient(res);
+    Controllers.patientController.getPatients(res);
 })
 
 router.post('/', (req, res) => {
