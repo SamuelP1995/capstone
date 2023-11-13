@@ -1,7 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 let dbConnect = require("../dbConnect");
 
-//const History = require('./history');
 const Patient = require("./patient");
 
 const sequelizeInstance = dbConnect.Sequelize;
