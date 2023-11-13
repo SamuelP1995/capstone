@@ -50,3 +50,17 @@ History.init({
 History.belongsTo(Patient);
 
 module.exports = History;
+
+
+
+
+
+
+
+// {
+//     "patientId": 2,
+//     "callNotes": "pt shot in left foot, bandaged and applied pressure",
+//     "transport": "Yes, to Lafayette General",
+//     "date": "Friday 13, 2024",
+//     "time": "12:00 AM",
+// }
