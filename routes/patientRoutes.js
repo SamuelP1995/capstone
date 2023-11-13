@@ -8,8 +8,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    Controllers.patientController.createPatient(req.body, res)
+    Controllers.patientController.createPatient(req, res)
 })
 
+router.put('/:id', (req, res) => {
+    Controllers.patientController.updatePatient(req, res)
+})
+
+router.delete('/:id', (req, res) => {
+    Controllers.patientController.deletePatient(req, res)
+})
 
 module.exports = router;

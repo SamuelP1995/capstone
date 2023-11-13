@@ -10,12 +10,11 @@ const getUsers = (res) => {
     })
 }
 
-const createUsers = (req, res) => {
+const createUser = (req, res) => {
     Models.User.create(req.body)
         .then(data => {
             res.send({ result: 200 , data: data })
-        })
-        .catch(err => {
+        }).catch(err => {
             console.log(err)
         })
 }
@@ -40,5 +39,5 @@ const deleteUser = (req, res) => {
 
 
 module.exports = {
-    getUsers, createUsers, updateUser, deleteUser
+    getUsers, createUser, updateUser, deleteUser
 }

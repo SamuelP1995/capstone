@@ -2,7 +2,7 @@ import { Logout } from "@mui/icons-material";
 import React, { useState} from "react";
 
 
-export default function Login() {
+export default function Login({setToken}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
@@ -10,7 +10,16 @@ export default function Login() {
       // Implement login logic here
       console.log('Email:', email);
       console.log('Password:', password);
-      // Implement login logic here
+      // on backend, use given email to lookup User (inside login controller on backend)
+      // if User with email exists, then compare given password to password for User in DB
+      // if passwords match, return true,
+    
+
+      // otherwise, return false
+     
+
+      // on frontend, call setToken() with result from above
+      //
     }
   
     return (

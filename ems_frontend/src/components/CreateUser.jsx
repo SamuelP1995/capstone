@@ -22,6 +22,7 @@ function CreateUserForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Implement your user creation logic here
+    //write fetch req to create user on backend 
     console.log('Form Data:', formData);
   };
 
