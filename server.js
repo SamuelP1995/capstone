@@ -7,6 +7,8 @@ const userRoutes = require('./routes/userRoutes')
 const patientRoutes = require('./routes/patientRoutes')
 const historyRoutes = require('./routes/historyRoutes')
 const loginRoutes = require('./routes/loginRoutes')
+const logoutRoutes = require('./routes/logoutRoutes')
+
 
 
 const app = express();
@@ -18,6 +20,8 @@ app.use('/users', userRoutes)
 app.use('/patients', patientRoutes)
 app.use('/histories', historyRoutes)
 app.use('/login', loginRoutes)
+app.use('/logout', logoutRoutes)
+
 
 
 app.get("/", (req, res) => {
