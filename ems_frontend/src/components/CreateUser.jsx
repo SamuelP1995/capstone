@@ -19,11 +19,29 @@ function CreateUserForm() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Implement your user creation logic here
-    //write fetch req to create user on backend 
-    console.log('Form Data:', formData);
+  const handleSubmit = async() => {
+    //  e.preventDefault();
+    //  console.log('Form Data:', formData);
+
+    try {
+      const response = await fetch('http://localhost:5173/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'New User',
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (response.ok) {
+        console.log('User created successfully');
+      } else {
+        const errorData = await response.json();
+        console.log('Error creating user: ', errorData);
+      }
+    } catch (error) {
+      console.log('Error creating user: ', error);
+    }
+
   };
 
   return (

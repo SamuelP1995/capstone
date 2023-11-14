@@ -1,4 +1,4 @@
-import { Logout } from "@mui/icons-material";
+
 import React, { useState} from "react";
 
 
@@ -25,7 +25,7 @@ export default function Login({setToken}) {
       // if passwords match, return true,
 
       // otherwise, return false
-      
+
       // on frontend, call setToken() with result from above
     }
   
