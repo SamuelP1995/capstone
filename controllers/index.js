@@ -1,5 +1,6 @@
 module.exports={
     userController: require('./userController'),
     patientController: require('./patientController'),
-    historyController: require('./historyController')
+    historyController: require('./historyController'),
+    loginController: require('./loginController')
 }
