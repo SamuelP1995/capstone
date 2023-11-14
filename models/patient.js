@@ -90,9 +90,12 @@ module.exports = Patient;
 //     "emsId": 1,
 //     "firstName": "Micheal",
 //     "lastName": "Myers",
+//     "age": 57,
+//     "gender": "Male",
 //     "address": "666 Hell Street",
 //     "city": "Lafayette",
 //     "state": "Louisiana",
-//     "zipcode": 66666
-//     "phone": 6666666
+//     "zipcode": 66666,
+//     "phone": 6666666,
+//     "reason": "pt shot in head"
 // }

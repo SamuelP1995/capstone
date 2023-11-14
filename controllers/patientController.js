@@ -11,6 +11,15 @@ const getPatients = (res) => {
     })
 }
 
+const getPatientById = (req, res) => {
+    Models.Patient.findOne({ where: { id: req.params.id }})
+        .then(data => {
+            res.send({ result: 200, data: data })
+        }).catch(err => {
+            console.log(err)
+        })
+}
+
 const createPatient = (req, res) => {
     Models.Patient.create(req.body)
         .then(data => {
@@ -40,5 +49,5 @@ const deletePatient = (req, res) => {
 
 
 module.exports = {
-    getPatients, createPatient, updatePatient, deletePatient
+    getPatients, getPatientById ,createPatient, updatePatient, deletePatient
 }

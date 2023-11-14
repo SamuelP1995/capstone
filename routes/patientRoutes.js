@@ -7,6 +7,10 @@ router.get('/', (req, res) => {
     Controllers.patientController.getPatients(res);
 })
 
+router.get('/:id', (req, res) => {
+    Controllers.patientController.getPatientById(req, res)
+})
+
 router.post('/', (req, res) => {
     Controllers.patientController.createPatient(req, res)
 })
