@@ -4,10 +4,10 @@ import './App.css'
 import React, { useState } from 'react';
 import { BrowserRouter, Routes } from 'react-router-dom';
 
-import CallNotesPage from './components/CallNotes'
+import CallNotesPage from './components/CallNotes';
 // import MapContainer from './components/mapContainer'
 // import DirectionsPage from './components/Directions'
-import Login from './components/login';
+import Login from './components/Login';
 import Navbar from './components/NavBar';
 
 function App() {

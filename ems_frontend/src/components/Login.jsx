@@ -6,20 +6,27 @@ export default function Login({setToken}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
-    const handleLogin = () => {
-      // Implement login logic here
+    const handleLogin = async() => {
       console.log('Email:', email);
       console.log('Password:', password);
+
+      try {
+        const response = await axios.post('http://localhost:5173/login', {
+          email,
+          password,
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.log('Login failed:', error);
+        console.log('Login failed:', error.response.data);
+      }
       // on backend, use given email to lookup User (inside login controller on backend)
       // if User with email exists, then compare given password to password for User in DB
       // if passwords match, return true,
-    
 
       // otherwise, return false
-     
-
+      
       // on frontend, call setToken() with result from above
-      //
     }
   
     return (
