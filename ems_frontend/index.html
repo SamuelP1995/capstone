@@ -1,13 +1,92 @@
 <!doctype html>
+
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+
+
+
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+
+    <input type="text" id="nameInput" placeholder="Enter your name..." />
+    <button id="setName">Set Name</button>
+
+    <div id="isTypingMessage"> </div>
+    
+    <ul id="userList"></ul>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+
+    <script>
+      let socket = io();
+      let form = document.getElementById('form');
+      let input = document.getElementById('input');
+
+      const nameInput = document.getElementById('nameInput');
+      const setNameButton = document.getElementById('setName');
+      let name; 
+
+      const isTypingMessage = document.getElementById('isTypingMessage');
+
+      const userList = document.getElementById('userList');
+
+      form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (input.value) {
+              socket.emit('chat message', input.value);
+              input.value = '';
+          }
+      });
+
+      setNameButton.addEventListener('click', () => {
+          name = nameInput.value;
+          socket.emit('setName', name);
+      });
+
+      input.addEventListener('input', () => {
+          const isTyping = input.value.trim() !== '';
+          if (isTyping) {
+              console.log('emitting user typing event', name);
+              socket.emit('userTyping', { name: name }); 
+          } else {
+              isTypingMessage.innerHTML = '';
+          }
+      });
+
+      socket.on('userTyping', (data) => {
+          console.log("user typing : ", data)
+          isTypingMessage.innerHTML = `${data.name} is typing...`;
+      });
+
+      socket.on('updateUserList', (users) => {
+          userList.innerHTML = users.map((user) => `<li>${user}</li>`).join('');
+      });
+      
+      socket.onAny(() => console.log('evt received!'))
+
+      socket.on('chat message', function(msg) {
+          console.log(msg);
+          let item = document.createElement('li');
+          item.textContent = msg;
+          messages.appendChild(item);
+          window.scrollTo(0, document.body.scrollHeight);
+      });
+
+  </script>
+
   </body>
 </html>
