@@ -7,6 +7,10 @@ router.get('/', (req, res) => {
     Controllers.historyController.getHistory(res);
 })
 
+router.get('/:id', (req, res) => {
+    Controllers.historyController.getHistoryById(req, res)
+})
+
 router.post('/', (req, res) => {
     Controllers.historyController.createHistory(req, res)
 })

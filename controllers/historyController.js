@@ -11,6 +11,15 @@ const getHistory = (res) => {
     })
 }
 
+const getHistoryById = (req, res) => {
+    Models.History.findOne({ where: { patientId: req.params.id }})
+        .then(data => {
+            res.send({ result: 200, data: data })
+        }).catch(err => {
+            console.log(err)
+        })
+}
+
 const createHistory = (req, res) => {
     Models.History.create(req.body)
         .then(data => {
@@ -40,5 +49,5 @@ const deleteHistory = (req, res) => {
 
 
 module.exports = {
-    createHistory, getHistory, updateHistory, deleteHistory
+    createHistory, getHistoryById ,getHistory, updateHistory, deleteHistory
 }
