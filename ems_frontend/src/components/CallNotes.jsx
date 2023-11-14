@@ -5,13 +5,14 @@ function CallNotesPage() {
     const [callData, setCallData] = useState({
         firstName: '',
         lastName: '',
-        address: '',
-        reason: '',
         age: '',
         gender: '',
+        address: '',
         city:'',
         state:'',
         zipcode:'',
+        phone: '',
+        reason: '',
     });
 
     useEffect(() => {
@@ -81,6 +82,12 @@ function CallNotesPage() {
           label="Gender"
           variant="outlined"
           value={callData.gender}
+          disabled
+        />
+        <TextField
+          label="Phone"
+          variant="outlined"
+          value={callData.phone}
           disabled
         />
         <TextField

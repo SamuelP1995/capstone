@@ -6,7 +6,7 @@ const History = require('./history')
 
 async function init() {
     await User.sync(); 
-    await Patient.sync();
+    await Patient.sync({ alter: true });
     await History.sync();
 };
 

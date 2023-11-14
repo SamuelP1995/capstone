@@ -32,6 +32,16 @@ Patient.init({
         allowNull: false, 
         required: true
     },
+    age: {
+        type: DataTypes.INTEGER, 
+        allowNull: false, 
+        required: true
+    },
+    gender: {
+        type: DataTypes.STRING, 
+        allowNull: false, 
+        required: true
+    },
     address: {
         type: DataTypes.STRING,
         allowNull: true,
@@ -51,6 +61,10 @@ Patient.init({
     phone: {
         type: DataTypes.INTEGER, 
         allowNull: true, 
+    },
+    reason: {
+        type: DataTypes.STRING,
+        allowNull: true
     }},
     {
         sequelize: sequelizeInstance, 
