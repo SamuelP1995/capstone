@@ -8,6 +8,8 @@ const patientRoutes = require('./routes/patientRoutes')
 const historyRoutes = require('./routes/historyRoutes')
 const loginRoutes = require('./routes/loginRoutes')
 const logoutRoutes = require('./routes/logoutRoutes')
+const createUserRoutes = require('./routes/createUserRoutes')
+
 
 
 
@@ -21,6 +23,8 @@ app.use('/patients', patientRoutes)
 app.use('/histories', historyRoutes)
 app.use('/login', loginRoutes)
 app.use('/logout', logoutRoutes)
+app.use('/create', createUserRoutes)
+
 
 
 

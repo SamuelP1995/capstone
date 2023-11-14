@@ -3,5 +3,6 @@ module.exports={
     patientController: require('./patientController'),
     historyController: require('./historyController'),
     loginController: require('./loginController'),
-    logoutController: require('./logoutController')
+    logoutController: require('./logoutController'),
+    createUserController: require('./createUserController')
 }
