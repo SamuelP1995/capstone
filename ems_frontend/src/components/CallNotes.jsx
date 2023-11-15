@@ -19,7 +19,7 @@ function CallNotesPage() {
         const fetchData = async () => {
             try {
             // Fetch data from your database or API
-                const response = await fetch('your_api_endpoint_here');
+                const response = await fetch('http://localhost:5173/patients');
                 const data = await response.json();
 
                 setCallData(data);
@@ -55,6 +55,12 @@ function CallNotesPage() {
           disabled
         />
         <TextField
+          label="Gender"
+          variant="outlined"
+          value={callData.gender}
+          disabled
+        />
+        <TextField
           label="Address"
           variant="outlined"
           value={callData.address}
@@ -76,12 +82,6 @@ function CallNotesPage() {
           label="Zipcode"
           variant="outlined"
           value={callData.zipcode}
-          disabled
-        />
-        <TextField
-          label="Gender"
-          variant="outlined"
-          value={callData.gender}
           disabled
         />
         <TextField
