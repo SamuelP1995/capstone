@@ -20,7 +20,7 @@ function SendCallNotes() {
 
     const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/histories/5');
+          const response = await axios.get('http://localhost:8080/histories');
           const data = response.data;
     
           setSendData(data);
@@ -32,7 +32,7 @@ function SendCallNotes() {
     const handleFinishCall = async () => {
 
       try {
-        const response = await axios.push('http://localhost:8080/histories/5', sendData);
+        const response = await axios.post('http://localhost:8080/histories', sendData);
 
         setSendData({
             callNotes: '',
