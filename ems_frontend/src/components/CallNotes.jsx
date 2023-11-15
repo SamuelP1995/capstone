@@ -24,6 +24,7 @@ function CallNotesPage() {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8080/patients/2');
+        console.log("Response.data: ", response.data);
         const data = response.data; 
   
         setCallData(data);
