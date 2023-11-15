@@ -31,7 +31,7 @@ function SendCallNotes() {
     const handleFinishCall = async () => {
 
       try {
-        const response = await axios.push('http://localhost:8080/histories/2', {
+        const response = await axios.push('http://localhost:8080/histories', {
 
         });
 

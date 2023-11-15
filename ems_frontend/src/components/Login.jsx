@@ -23,6 +23,21 @@ export default function Login({setToken}) {
         console.log('Login failed:', error);
       }
     }
+
+    const handleNewUser = async() => {
+
+      try {
+        const response = await axios.post('http://localhost:8080/create', {
+          
+        });
+        console.log(response.data);
+
+        setToken(response.data.success);
+      } catch (error) {
+        console.log('Login failed:', error);
+      }
+    }
+
   
     return (
       <div>
@@ -37,6 +52,10 @@ export default function Login({setToken}) {
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
           <button type="button" onClick={handleLogin}>Login</button>
+          <br></br>
+          <br></br>
+          <button type="button" onClick={handleLogin}>New User</button>
+
         </form>
       </div>
     );
