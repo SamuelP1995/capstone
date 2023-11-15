@@ -46,11 +46,7 @@ function SendCallNotes() {
                 Call Notes
             </Typography>
 
-      <form>
-        <br></br>
-        <Typography variant="h4" gutterBottom>
-          Call Notes
-        </Typography>
+        <form>
 
         <TextField
           label="Call Notes"
@@ -83,11 +79,11 @@ function SendCallNotes() {
           Clear From Call
         </Button>
 
-      </form>
+        </form>
 
-    </Container>
+        </Container>
 
-  );
+    );
 }
 
 export default SendCallNotes;
