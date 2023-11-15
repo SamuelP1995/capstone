@@ -11,7 +11,8 @@ export default function LogoutForm() {
   const handleLogout = () => {
 
     // Implement your logout logic here
-    // Redirect the user to the login page or another page.
+    // Redirect the user to the login page or another page
+    setToken(!token);
   };
 
   return (
