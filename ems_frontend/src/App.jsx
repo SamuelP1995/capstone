@@ -9,10 +9,11 @@ import CallNotesPage from './components/CallNotes';
 // import DirectionsPage from './components/Directions'
 import Login from './components/Login';
 import Navbar from './components/NavBar';
+import SendCallNotes from './components/SendCallNotes';
 
 function App() {
 
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(true);
   
   if(!token) {
     return <Login setToken={setToken} />
@@ -32,6 +33,7 @@ function App() {
     </BrowserRouter> */}
       <Navbar />
       <CallNotesPage />
+      <SendCallNotes />
       {/* <MapContainer /> */}
       {/* <DirectionsPage />  */}
     </>
