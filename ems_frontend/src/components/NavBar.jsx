@@ -5,16 +5,26 @@ import { Link } from 'react-router-dom';
 
 
 function Navbar() {
+
+  const handleLogoutPage = async() => {
+    try {
+      const response = await axios.get('http://localhost:8080/logout', {
+
+      });
+
+    } catch (error) {
+      console.log('Login failed:', error);
+    }
+  }
+
+
   return (
     <AppBar position="static" color ="success">
       <Toolbar >
         <Typography variant="h6" component="div"  sx={{ flexGrow: 1 }}>
           EMS Ambulance Company
         </Typography>
-        <Button color="inherit" >
-        {/* component={Link} to="/logout"> */}
-          Logout
-        </Button>
+        <Button color="inherit" onClick={handleLogoutPage} > Logout </Button>
       </Toolbar>
     </AppBar>
   );
