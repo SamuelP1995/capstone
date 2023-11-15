@@ -12,7 +12,7 @@ import Navbar from './components/NavBar';
 
 function App() {
 
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState();
   
   if(!token) {
     return <Login setToken={setToken} />

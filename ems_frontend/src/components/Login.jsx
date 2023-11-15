@@ -1,6 +1,7 @@
 
 import React, { useState} from "react";
 
+import axios from "axios";
 
 export default function Login({setToken}) {
     const [email, setEmail] = useState('');
@@ -11,14 +12,15 @@ export default function Login({setToken}) {
       console.log('Password:', password);
 
       try {
-        const response = await axios.post('http://localhost:5173/login', {
+        const response = await axios.post('http://localhost:8080/login', {
           email,
           password,
         });
         console.log(response.data);
+
+        setToken(response.data.success);
       } catch (error) {
         console.log('Login failed:', error);
-        console.log('Login failed:', error.response.data);
       }
       // on backend, use given email to lookup User (inside login controller on backend)
       // if User with email exists, then compare given password to password for User in DB

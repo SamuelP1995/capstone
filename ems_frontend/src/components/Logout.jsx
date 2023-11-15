@@ -3,6 +3,9 @@ import { Button, Container, Typography } from '@mui/material';
 
 
 
+// look at how setToken was passed to the login component
+// pass setTokent to this form
+// call setToken(false) when handleLogout is called
 
 export default function LogoutForm() {
   const handleLogout = () => {

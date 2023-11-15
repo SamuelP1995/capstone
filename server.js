@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 require("./dbConnect");
-
+const cors = require("cors");
 
 const userRoutes = require('./routes/userRoutes')
 const patientRoutes = require('./routes/patientRoutes')
@@ -14,7 +14,7 @@ const createUserRoutes = require('./routes/createUserRoutes')
 
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
 

@@ -18,7 +18,6 @@ function CallNotesPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-            // Fetch data from your database or API
                 const response = await fetch('http://localhost:5173/patients');
                 const data = await response.json();
 
