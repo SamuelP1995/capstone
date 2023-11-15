@@ -21,7 +21,7 @@ function CallNotesPage() {
     useEffect(() => {
       const fetchData = async () => {
           try {
-              const response = await fetch('http://localhost:8080/patients');
+              const response = await fetch('http://localhost:8080/patients/2');
               const data = await response.json();
 
               setCallData(data);
@@ -33,25 +33,30 @@ function CallNotesPage() {
     }, []);
 
     const handleGetCall = async () => {
-      console.log('First Name: ', firstName);
-      console.log('Last Name: ', lastName);
-      console.log('Age: ', age);
-      console.log('Address: ', address);
-      console.log('City: ', city);
-      console.log('State: ', state);
-      console.log('Zipcode: ', zipcode);
-      console.log('Phone: ', phone);
-      console.log('Reason for Calling: ', reason);
 
       try {
         const response = await axios.get('http://localhost:8080/patients/2', {
           firstName, lastName, age, address, city, state, zipcode, phone, reason
         });
-        console.log("Respnse.data: ", response.data);
+        const data = await response.json();
+
+        setCallData(data);
+        
+        console.log("Respnse.data: ", response);
+
+        console.log('First Name: ', firstName);
+        console.log('Last Name: ', lastName);
+        console.log('Age: ', age);
+        console.log('Address: ', address);
+        console.log('City: ', city);
+        console.log('State: ', state);
+        console.log('Zipcode: ', zipcode);
+        console.log('Phone: ', phone);
+        console.log('Reason for Calling: ', reason);
+
       } catch (error) {
         console.log('Error: ', error);
       }
-
     }
 
     
