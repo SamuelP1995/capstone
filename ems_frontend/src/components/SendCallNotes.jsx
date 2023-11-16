@@ -8,43 +8,43 @@ function SendCallNotes() {
 
 
     const [sendData, setSendData] = useState({
-      callNotes: '',
-      transport: '',
-      date: '',
-      time: '',
+        patientId: '',
+        callNotes: '',
+        transport: '',
+        date: '',
+        time: '',
     });
 
     useEffect(() => {
-      fetchData();
+        fetchData();
     }, []);
 
     const fetchData = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/histories');
-          const data = response.data;
-    
-          setSendData(data);
+            const response = await axios.get('http://localhost:8081/histories');
+            const data = response.data;
+            setSendData(data);
         } catch (error) {
-          console.log('Error fetching data:', error);
+            console.log('Error fetching data:', error);
         }
     };
 
     const handleFinishCall = async () => {
+        try {
+            const response = await axios.post('http://localhost:8081/histories', sendData);
 
-      try {
-        const response = await axios.post('http://localhost:8080/histories', sendData);
-
-        setSendData({
-            callNotes: '',
-            transport: '',
-            date: '',
-            time: '',
-        });
+            setSendData({
+                patientId: '',
+                callNotes: '',
+                transport: '',
+                date: '',
+                time: '',
+            });
     
-        console.log('Data Saved: ', response.data)
-      } catch (error) {
-        console.log('Error : ', error);
-      }
+            console.log('Data Saved: ', response.data)
+        } catch (error) {
+            console.log('Error : ', error);
+        }
     }    
 
     return (
@@ -80,9 +80,15 @@ function SendCallNotes() {
           value={sendData.time}
           onChange={(e) => setSendData({ ...sendData, time: e.target.value })}
         />
+        {/* <TextField
+          label="Patient Id"
+          variant="outlined"
+          value={callData.patientId}
+          disabled
+        /> */}
         <br></br>
         <Button
-          type="Clear From Call"
+          type="button"
           variant="contained"
           color="success"
           onClick={handleFinishCall}
@@ -93,7 +99,6 @@ function SendCallNotes() {
         </form>
 
         </Container>
-
     );
 }
 

@@ -5,6 +5,8 @@ import axios from "axios";
 
 function CallNotesPage() {
     const [callData, setCallData] = useState({
+        emsId: '',
+        id: '',
         firstName: '',
         lastName: '',
         age: '',
@@ -25,7 +27,7 @@ function CallNotesPage() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/patients/2');
+        const response = await axios.get('http://localhost:8081/patients/2');
         console.log("Response.data: ", response.data);
         const data = response.data; 
   
@@ -42,9 +44,11 @@ function CallNotesPage() {
       try {
         const response = await axios.get('http://localhost:8081/patients/2');
         const data = response.data;
+        console.log('Entire data: ', data);
+        const { emsId, id, firstName, lastName, age, gender,  address, city, state, zipcode, phone, reason } = data;
 
-        const { firstName, lastName, age, gender,  address, city, state, zipcode, phone, reason } = data;
-
+        console.log('Ems Id: ', data.emsId);
+        console.log('Patient Id: ', data.id);
         console.log('First Name: ', data.firstName);
         console.log('Last Name: ', data.lastName);
         console.log('Age: ', data.age);
@@ -56,7 +60,7 @@ function CallNotesPage() {
         console.log('Reason for Calling: ', data.reason);
 
 
-        console.log('Extracted data:', { firstName, lastName, age, gender, address, city, state, zipcode, phone, reason });
+        console.log('Extracted data:', { emsId, id, firstName, lastName, age, gender, address, city, state, zipcode, phone, reason });
 
         setCallData(data);
 
