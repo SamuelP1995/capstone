@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button } from '@mui/material';
-
 import axios from "axios";
+
 
 function CallNotesPage() {
     const [callData, setCallData] = useState({
@@ -25,15 +25,33 @@ function CallNotesPage() {
     }, []);
 
 
-    const fetchData = async () => {
+    const fetchRandomPatientId = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/patients/2');
-        console.log("Response.data: ", response.data);
-        const data = response.data; 
-  
-        setCallData(data);
+        const response = await axios.get('http://localhost:8081/patients');
+        const patients = response.data.data;
+        console.log('patients response.data: ', patients);
+        const randomNum = Math.floor(Math.random() * patients.length);
+        const randomPatientId = patients[randomNum].id;
+
+        return randomPatientId;
       } catch (error) {
-        console.log('Error fetching data:', error);
+        console.log('Error fetching patient ids: ', error);
+      } 
+    }
+
+    const fetchData = async () => {
+      const randomPatientId = await fetchRandomPatientId();
+      console.log('Random Patient Id: ', randomPatientId);
+      if (randomPatientId) {
+        try {
+          const response = await axios.get(`http://localhost:8081/patients/${randomPatientId}`);
+          console.log("Response.data: ", response.data);
+          const data = response.data; 
+  
+          setCallData(data);
+        } catch (error) {
+          console.log('Error fetching data:', error);
+        }
       }
     };
 
@@ -42,27 +60,28 @@ function CallNotesPage() {
       e.preventDefault();
 
       try {
-        const response = await axios.get('http://localhost:8081/patients/2');
-        const data = response.data;
-        console.log('Entire data: ', data);
-        const { emsId, id, firstName, lastName, age, gender,  address, city, state, zipcode, phone, reason } = data;
+        await fetchData();
+        // const response = await axios.get('http://localhost:8081/patients/2');
+        // const data = response.data;
+        // console.log('Entire data: ', data);
+        // const { emsId, id, firstName, lastName, age, gender,  address, city, state, zipcode, phone, reason } = data;
 
-        console.log('Ems Id: ', data.emsId);
-        console.log('Patient Id: ', data.id);
-        console.log('First Name: ', data.firstName);
-        console.log('Last Name: ', data.lastName);
-        console.log('Age: ', data.age);
-        console.log('Address: ', data.address);
-        console.log('City: ', data.city);
-        console.log('State: ', data.state);
-        console.log('Zipcode: ', data.zipcode);
-        console.log('Phone: ', data.phone);
-        console.log('Reason for Calling: ', data.reason);
+        // console.log('Ems Id: ', data.emsId);
+        // console.log('Patient Id: ', data.id);
+        // console.log('First Name: ', data.firstName);
+        // console.log('Last Name: ', data.lastName);
+        // console.log('Age: ', data.age);
+        // console.log('Address: ', data.address);
+        // console.log('City: ', data.city);
+        // console.log('State: ', data.state);
+        // console.log('Zipcode: ', data.zipcode);
+        // console.log('Phone: ', data.phone);
+        // console.log('Reason for Calling: ', data.reason);
 
 
-        console.log('Extracted data:', { emsId, id, firstName, lastName, age, gender, address, city, state, zipcode, phone, reason });
+        // console.log('Extracted data:', { emsId, id, firstName, lastName, age, gender, address, city, state, zipcode, phone, reason });
 
-        setCallData(data);
+        // setCallData(data);
 
       } catch (error) {
         console.log('Error: ', error);
@@ -76,66 +95,69 @@ function CallNotesPage() {
           </Typography>
 
       <form>
+  
         <TextField
           label="First Name"
           variant="outlined"
           value={callData.firstName}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <TextField
           label="Last Name"
           variant="outlined"
           value={callData.lastName}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <TextField
           label="Age"
           variant="outlined"
           value={callData.age}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
+        <br></br>
         <TextField
           label="Gender"
           variant="outlined"
           value={callData.gender}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <TextField
           label="Address"
           variant="outlined"
           value={callData.address}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <TextField
           label="City"
           variant="outlined"
           value={callData.city}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
+        <br></br>
         <TextField
           label="State"
           variant="outlined"
           value={callData.state}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <TextField
           label="Zipcode"
           variant="outlined"
           value={callData.zipcode}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <TextField
           label="Phone"
           variant="outlined"
           value={callData.phone}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <TextField
           label="Reason for Calling"
           variant="outlined"
           fullWidth
           value={callData.reason}
-          disabled
+          style={{ fontWeight: 'bold' }}
         />
         <Button
           type="Get Call"
