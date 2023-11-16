@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 require("./dbConnect");
 const cors = require("cors");
+const morgan = require('morgan');
 
 const userRoutes = require('./routes/userRoutes')
 const patientRoutes = require('./routes/patientRoutes')
@@ -14,6 +15,7 @@ const createUserRoutes = require('./routes/createUserRoutes')
 
 
 const app = express();
+app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
 
@@ -33,7 +35,7 @@ app.get("/", (req, res) => {
 
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8081;
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

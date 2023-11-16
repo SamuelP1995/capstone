@@ -17,9 +17,11 @@ function CallNotesPage() {
         reason: '',
     });
 
+
     useEffect(() => {
       fetchData();     
     }, []);
+
 
     const fetchData = async () => {
       try {
@@ -33,15 +35,15 @@ function CallNotesPage() {
       }
     };
 
-    const handleGetCall = async () => {
+
+    const handleGetCall = async (e) => {
+      e.preventDefault();
 
       try {
-        const response = await axios.get('http://localhost:8080/patients/2');
+        const response = await axios.get('http://localhost:8081/patients/2');
         const data = response.data;
 
-        setCallData(data);
-
-        console.log("Data: ", data);
+        const { firstName, lastName, age, gender,  address, city, state, zipcode, phone, reason } = data;
 
         console.log('First Name: ', data.firstName);
         console.log('Last Name: ', data.lastName);
@@ -52,6 +54,11 @@ function CallNotesPage() {
         console.log('Zipcode: ', data.zipcode);
         console.log('Phone: ', data.phone);
         console.log('Reason for Calling: ', data.reason);
+
+
+        console.log('Extracted data:', { firstName, lastName, age, gender, address, city, state, zipcode, phone, reason });
+
+        setCallData(data);
 
       } catch (error) {
         console.log('Error: ', error);

@@ -14,7 +14,7 @@ const getPatients = (res) => {
 const getPatientById = (req, res) => {
     Models.Patient.findOne({ where: { id: req.params.id }})
         .then(data => {
-            res.send({ result: 200, data: data })
+            res.status(200).send(data)
         }).catch(err => {
             console.log(err)
         })
