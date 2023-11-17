@@ -5,8 +5,6 @@ import axios from "axios";
 
 
 function SendCallNotes() {
-
-
     const [sendData, setSendData] = useState({
         patientId: '',
         callNotes: '',

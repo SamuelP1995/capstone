@@ -19,11 +19,9 @@ function CallNotesPage() {
         reason: '',
     });
 
-
     useEffect(() => {
       fetchData();     
     }, []);
-
 
     const fetchRandomPatientId = async () => {
       try {
@@ -65,7 +63,6 @@ function CallNotesPage() {
         }
       }
     };
-
 
     const handleGetCall = async (e) => {
       e.preventDefault();
@@ -190,7 +187,6 @@ function CallNotesPage() {
         <br></br>
 
       </form>
-
       </Container>
 
     );

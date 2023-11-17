@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Icon } from '@mui/material';
 import { Link } from 'react-router-dom'; 
-
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
 
 function Navbar() {
@@ -21,6 +21,7 @@ function Navbar() {
   return (
     <AppBar position="static" color ="success">
       <Toolbar >
+          <LocalHospitalIcon fontSize='large'/>
         <Typography variant="h6" component="div"  sx={{ flexGrow: 1 }}>
           EMS Ambulance Company
         </Typography>
