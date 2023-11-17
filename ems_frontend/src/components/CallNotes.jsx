@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button } from '@mui/material';
 import axios from "axios";
-
+import PatientHistory from './PatientHistory';
 
 function CallNotesPage() {
     const [callData, setCallData] = useState({
@@ -19,9 +19,17 @@ function CallNotesPage() {
         reason: '',
     });
 
+    const [patientHistories, setPatientHistories] = useState([]);
+
+    const [showHistory, setShowHistory] = useState(false);
+
+    const toggleShowHistory = () => setShowHistory(!showHistory);
+
+
     useEffect(() => {
       fetchData();     
     }, []);
+
 
     const fetchRandomPatientId = async () => {
       try {
@@ -37,16 +45,20 @@ function CallNotesPage() {
       } 
     }
 
+
     const fetchHistoryData = async (patientId) => {
       try{
-        const response = await axios.get(`http://localhost:8081/histories/${patientId}`)
-        const history = response.data.data;
-        console.log('history response.data: ', history);
+        const response = await axios.get(`http://localhost:8081/histories`);
+        const histories = response.data.data;
+        const patientHistories = histories.filter((history) => history.patientId === patientId);
+        console.log('histories response.data: ', patientHistories);
         
+        setPatientHistories(patientHistories);
       } catch(error) {
         console.log('Error fetching Patient History: ', error);
       }
     }
+
 
     const fetchData = async () => {
       const randomPatientId = await fetchRandomPatientId();
@@ -58,11 +70,13 @@ function CallNotesPage() {
           const data = response.data; 
   
           setCallData(data);
+          await fetchHistoryData(randomPatientId);
         } catch (error) {
           console.log('Error fetching data: ', error);
         }
       }
     };
+
 
     const handleGetCall = async (e) => {
       e.preventDefault();
@@ -74,19 +88,24 @@ function CallNotesPage() {
       }
     }  
 
+
     const handleGetPatientHistory = async (e) => {
       e.preventDefault();
 
       try {
-        const randomPatientId = await fetchRandomPatientId();
-        console.log('Random patient Id: ', randomPatientId);
-        if (randomPatientId) {
-          await fetchHistoryData(randomPatientId);
+        console.log('Patient History of: ', {callData});
+        if (callData.id) {
+          // await fetchHistoryData(callData.id);
+
+          toggleShowHistory();
+        } else {
+          console.log('patient id not found!');
         }
       } catch (error) {
         console.log('Error fetching Patient History Data: ', error);
       }
     }
+
 
     return (
       <Container maxWidth="lg">
@@ -181,14 +200,35 @@ function CallNotesPage() {
           color="success"
           onClick={handleGetPatientHistory}
         >
-          Get Patient History
+          {showHistory ? 'Hide Patient History' : 'Show Patient History'}
         </Button>
         <br></br>
         <br></br>
 
       </form>
-      </Container>
 
+        {showHistory && (
+          <div>
+            <Typography variant="h5" gutterBottom>
+              Patient History
+            </Typography>
+
+            {patientHistories.map((history) => (
+              <div key={history.id}>
+                <hr />
+                <br></br>
+                <PatientHistory history={history} />
+                <br></br>
+                <hr />
+
+              </div>
+            ))}
+          </div>
+        )}
+
+      { showHistory }
+
+      </Container>
     );
 
 }

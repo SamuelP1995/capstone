@@ -57,6 +57,8 @@ function SendCallNotes() {
           label="Call Notes"
           variant="outlined"
           fullWidth
+          multiline
+          rows={2}
           value={sendData.callNotes}
           onChange={(e) => setSendData({ ...sendData, callNotes: e.target.value })}
         />
