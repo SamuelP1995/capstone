@@ -39,6 +39,17 @@ function CallNotesPage() {
       } 
     }
 
+    const fetchHistoryData = async (patientId) => {
+      try{
+        const response = await axios.get(`http://localhost:8081/histories/${patientId}`)
+        const history = response.data.data;
+        console.log('history response.data: ', history);
+        
+      } catch(error) {
+        console.log('Error fetching Patient History: ', error);
+      }
+    }
+
     const fetchData = async () => {
       const randomPatientId = await fetchRandomPatientId();
       console.log('Random Patient Id: ', randomPatientId);
@@ -50,7 +61,7 @@ function CallNotesPage() {
   
           setCallData(data);
         } catch (error) {
-          console.log('Error fetching data:', error);
+          console.log('Error fetching data: ', error);
         }
       }
     };
@@ -61,32 +72,24 @@ function CallNotesPage() {
 
       try {
         await fetchData();
-        // const response = await axios.get('http://localhost:8081/patients/2');
-        // const data = response.data;
-        // console.log('Entire data: ', data);
-        // const { emsId, id, firstName, lastName, age, gender,  address, city, state, zipcode, phone, reason } = data;
-
-        // console.log('Ems Id: ', data.emsId);
-        // console.log('Patient Id: ', data.id);
-        // console.log('First Name: ', data.firstName);
-        // console.log('Last Name: ', data.lastName);
-        // console.log('Age: ', data.age);
-        // console.log('Address: ', data.address);
-        // console.log('City: ', data.city);
-        // console.log('State: ', data.state);
-        // console.log('Zipcode: ', data.zipcode);
-        // console.log('Phone: ', data.phone);
-        // console.log('Reason for Calling: ', data.reason);
-
-
-        // console.log('Extracted data:', { emsId, id, firstName, lastName, age, gender, address, city, state, zipcode, phone, reason });
-
-        // setCallData(data);
-
       } catch (error) {
         console.log('Error: ', error);
       }
     }  
+
+    const handleGetPatientHistory = async (e) => {
+      e.preventDefault();
+
+      try {
+        const randomPatientId = await fetchRandomPatientId();
+        console.log('Random patient Id: ', randomPatientId);
+        if (randomPatientId) {
+          await fetchHistoryData(randomPatientId);
+        }
+      } catch (error) {
+        console.log('Error fetching Patient History Data: ', error);
+      }
+    }
 
     return (
       <Container maxWidth="lg">
@@ -174,6 +177,14 @@ function CallNotesPage() {
           onClick={(e) => e.preventDefault()}
         >
           Directions
+        </Button>
+        <Button
+          type="button"
+          variant="contained"
+          color="success"
+          onClick={handleGetPatientHistory}
+        >
+          Get Patient History
         </Button>
         <br></br>
         <br></br>
