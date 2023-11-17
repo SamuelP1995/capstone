@@ -16,28 +16,24 @@ const PatientHistory = ({history}) => {
           fullWidth
           multiline
           rows={2}
-          disabled
         />
         <TextField
           label="Transport"
           variant="outlined"
           value={transport}
           fullWidth
-          disabled
         />
         <TextField
           label="Date"
           variant="outlined"
           value={date}
           fullWidth
-          disabled
         />
         <TextField
           label="Time"
           variant="outlined"
           value={time}
           fullWidth
-          disabled
         />
       </div>
     );

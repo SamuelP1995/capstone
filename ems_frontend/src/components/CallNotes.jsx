@@ -174,6 +174,8 @@ function CallNotesPage() {
         <TextField
           label="Reason for Calling"
           variant="outlined"
+          multiline
+          rows={2}
           fullWidth
           value={callData.reason}
           style={{ fontWeight: 'bold' }}
