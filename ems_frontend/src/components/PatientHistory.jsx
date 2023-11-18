@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@mui/material';
+import { TextField, Grid } from '@mui/material';
 
 
 const PatientHistory = ({history}) => {
@@ -7,7 +7,8 @@ const PatientHistory = ({history}) => {
 
 
     return (
-      <div>
+        <Grid container spacing={2} style={{ marginBottom: '20px' }}>
+        <Grid item xs={12} md={4}>
         <TextField
           label="Call Notes"
           variant="outlined"
@@ -16,25 +17,32 @@ const PatientHistory = ({history}) => {
           multiline
           rows={2}
         />
+        </Grid>
+        <Grid item xs={12} md={4}>
         <TextField
           label="Transport"
           variant="outlined"
           value={transport}
           fullWidth
         />
+        </Grid>
+        <Grid item xs={12} md={4}>
         <TextField
           label="Date"
           variant="outlined"
           value={date}
           fullWidth
         />
+        </Grid>
+        <Grid item xs={12} md={4}>
         <TextField
           label="Time"
           variant="outlined"
           value={time}
           fullWidth
         />
-      </div>
+        </Grid>
+        </Grid>
     );
   };
     
