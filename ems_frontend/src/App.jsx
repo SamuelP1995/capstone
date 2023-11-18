@@ -21,7 +21,7 @@ function App() {
     <>
       <Navbar />
       <CallNotesPage />
-      <SendCallNotes />
+      {/* <SendCallNotes /> */}
     </>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button } from '@mui/material';
 import axios from "axios";
 import PatientHistory from './PatientHistory';
+import SendCallNotes from './SendCallNotes';
 
 function CallNotesPage() {
     const [callData, setCallData] = useState({
@@ -61,7 +62,7 @@ function CallNotesPage() {
 
 
     const fetchData = async () => {
-      const randomPatientId = patientId || (await fetchRandomPatientId());
+      const randomPatientId = (await fetchRandomPatientId());
       console.log('Random Patient Id: ', randomPatientId);
       if (randomPatientId) {
         try {
@@ -189,14 +190,14 @@ function CallNotesPage() {
         >
           Get Call
         </Button>
-        <Button
+        {/* <Button
           type="directions"
           variant="contained"
           color="success"
           onClick={(e) => e.preventDefault()}
         >
           Directions
-        </Button>
+        </Button> */}
         <Button
           type="button"
           variant="contained"
@@ -231,6 +232,7 @@ function CallNotesPage() {
 
       { showHistory }
 
+              <SendCallNotes patientId={patientId} />
       </Container>
     );
 

@@ -3,9 +3,10 @@ import { Container, Typography, TextField, Button } from '@mui/material';
 import axios from "axios";
 
 
-function SendCallNotes() {
+function SendCallNotes({ patientId }) {
+    // const { patientId } = patientId;
     const [sendData, setSendData] = useState({
-        patientId: '',
+        patientId: patientId,
         callNotes: '',
         transport: '',
         date: '',
@@ -79,12 +80,12 @@ function SendCallNotes() {
           value={sendData.time}
           onChange={(e) => setSendData({ ...sendData, time: e.target.value })}
         />
-        <TextField
+        {/* <TextField
           label="Patient Id"
           variant="outlined"
-          value={sendData.patientId}
+          value={patientId}
           disabled
-        />
+        /> */}
         <br></br>
         <Button
           type="button"
