@@ -19,8 +19,8 @@ function CallNotesPage() {
         reason: '',
     });
 
+    const [patientId, setPatientId] = useState('');
     const [patientHistories, setPatientHistories] = useState([]);
-
     const [showHistory, setShowHistory] = useState(false);
 
     const toggleShowHistory = () => setShowHistory(!showHistory);
@@ -61,7 +61,7 @@ function CallNotesPage() {
 
 
     const fetchData = async () => {
-      const randomPatientId = await fetchRandomPatientId();
+      const randomPatientId = patientId || (await fetchRandomPatientId());
       console.log('Random Patient Id: ', randomPatientId);
       if (randomPatientId) {
         try {
@@ -70,6 +70,7 @@ function CallNotesPage() {
           const data = response.data; 
   
           setCallData(data);
+          setPatientId(randomPatientId);
           await fetchHistoryData(randomPatientId);
         } catch (error) {
           console.log('Error fetching data: ', error);

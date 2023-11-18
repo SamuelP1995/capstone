@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Typography, TextField, Button } from '@mui/material';
-import axios from "axios";
+import React from 'react';
+import { TextField } from '@mui/material';
 
 
 const PatientHistory = ({history}) => {

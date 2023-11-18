@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Typography, TextField, Button } from '@mui/material';
-
 import axios from "axios";
 
 
@@ -14,7 +13,7 @@ function SendCallNotes() {
     });
 
     useEffect(() => {
-        fetchData();
+      fetchData();
     }, []);
 
     const fetchData = async () => {
@@ -80,12 +79,12 @@ function SendCallNotes() {
           value={sendData.time}
           onChange={(e) => setSendData({ ...sendData, time: e.target.value })}
         />
-        {/* <TextField
+        <TextField
           label="Patient Id"
           variant="outlined"
-          value={callData.patientId}
+          value={sendData.patientId}
           disabled
-        /> */}
+        />
         <br></br>
         <Button
           type="button"

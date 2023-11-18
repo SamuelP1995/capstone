@@ -12,7 +12,7 @@ export default function Login({setToken}) {
       console.log('Password:', password);
 
       try {
-        const response = await axios.post('http://localhost:8080/login', {
+        const response = await axios.post('http://localhost:8081/login', {
           email,
           password,
         });
@@ -27,7 +27,7 @@ export default function Login({setToken}) {
     const handleNewUser = async() => {
 
       try {
-        const response = await axios.post('http://localhost:8080/create', {
+        const response = await axios.post('http://localhost:8081/create', {
           
         });
         console.log(response.data);
