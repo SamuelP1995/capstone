@@ -149,11 +149,9 @@ function CallNotesPage() {
 
             {patientHistories.map((history) => (
               <div key={history.id}>
-                <hr />
                 <br></br>
                 <PatientHistory history={history} />
                 <br></br>
-                <hr />
               </div>
             ))}
           </div>
@@ -162,7 +160,7 @@ function CallNotesPage() {
         { showHistory }
 
         <SendCallNotes patientId={patientId} />
-        
+
        </Container> 
     );
 
