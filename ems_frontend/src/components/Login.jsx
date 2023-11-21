@@ -1,6 +1,6 @@
 
 import React, { useState} from "react";
-
+import { TextField, Button } from "@mui/material";
 import axios from "axios";
 
 export default function Login({setToken}) {
@@ -43,18 +43,22 @@ export default function Login({setToken}) {
       <div>
         <h2>Login</h2>
         <form>
-          <div>
+          <TextField variant="outlined" label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <br></br>
+          <br></br>
+          <TextField variant="outlined" label= "Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {/* <div>
             <label>Email:</label>
             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <label>Password:</label>
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <button type="button" onClick={handleLogin}>Login</button>
+          </div> */}
           <br></br>
           <br></br>
-          <button type="button" onClick={handleLogin}>New User</button>
+          <Button variant="contained" type="button" onClick={handleLogin}>Login</Button>
+          <Button variant="contained" type="button" onClick={handleLogin}>New User</Button>
 
         </form>
       </div>
