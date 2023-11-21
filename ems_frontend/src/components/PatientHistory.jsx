@@ -7,7 +7,7 @@ const PatientHistory = ({history}) => {
 
 
     return (
-      <Card sx={{ maxWidth: 300, color: 'success', flexDirection: 'row' }}>
+      <Card sx={{ maxWidth: 300, bgcolor: 'success.primary', flexDirection: 'row' }}>
         <CardContent> 
           <TextField label="Call Notes" variant="outlined" value={callNotes} fullWidth multiline rows={2} />
           <hr />

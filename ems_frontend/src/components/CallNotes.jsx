@@ -156,9 +156,9 @@ function CallNotesPage() {
             ))}
           </div>
         )}
-
+        <Card variant='outlined' bgcolor='success.main'>
         { showHistory }
-
+        </Card>
         <SendCallNotes patientId={patientId} />
 
        </Container> 
