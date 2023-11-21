@@ -9,7 +9,7 @@ import CallNotesPage from './components/CallNotes';
 
 
 function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(true);
   
   if(!token) {
     return <Login setToken={setToken} />

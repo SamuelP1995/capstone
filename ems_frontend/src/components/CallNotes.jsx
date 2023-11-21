@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, TextField, Button } from '@mui/material';
+import { Container, Typography, TextField, Button, CardContent, Card, CardActions } from '@mui/material';
 import axios from "axios";
 import PatientHistory from './PatientHistory';
 import SendCallNotes from './SendCallNotes';
@@ -108,10 +108,83 @@ function CallNotesPage() {
       }
     }
 
+    const card = (
+      <Card sx={{ maxWidth: 1000 }}>
+        <Typography variant="h4" gutterBottom> Call Notes </Typography>
+        <CardContent>
+          <TextField label="First Name" variant="outlined" value={callData.firstName} style={{ fontWeight: 'bold' }} />
+          <TextField label="Last Name" variant="outlined" value={callData.lastName} style={{ fontWeight: 'bold' }} />
+          <TextField label="Age" variant="outlined" value={callData.age} style={{ fontWeight: 'bold' }} />
+          <br></br>
+          <TextField label="Gender" variant="outlined" value={callData.gender} style={{ fontWeight: 'bold' }} />
+          <TextField label="Address" variant="outlined" value={callData.address} style={{ fontWeight: 'bold' }} />
+          <TextField label="City" variant="outlined" value={callData.city} style={{ fontWeight: 'bold' }} />
+          <br></br>
+          <TextField label="State" variant="outlined" value={callData.state} style={{ fontWeight: 'bold' }} />
+          <TextField label="Zipcode" variant="outlined" value={callData.zipcode} style={{ fontWeight: 'bold' }} />
+          <TextField label="Phone" variant="outlined" value={callData.phone} style={{ fontWeight: 'bold' }} />
+          <TextField label="Reason for Calling" variant="outlined" multiline rows={2} fullWidth value={callData.reason} style={{ fontWeight: 'bold' }} />
+        </CardContent>
+        <CardActions>
+          <Button type="Get Call" variant="contained" color="success" onClick= {handleGetCall}> 
+            Get Call 
+          </Button>
+          <Button type="button" variant="contained" color="success" onClick={handleGetPatientHistory}>
+            {showHistory ? 'Hide Patient History' : 'Show Patient History'}
+          </Button>
+        </CardActions>
+      </Card>
+    )
 
     return (
       <Container maxWidth="lg">
-          <Typography variant="h4" gutterBottom>
+     
+        <Card variant='outlined' color='success'> { card } </Card>
+
+        {showHistory && (
+          <div>
+            <Typography variant="h5" gutterBottom>
+              Patient History
+            </Typography>
+
+            {patientHistories.map((history) => (
+              <div key={history.id}>
+                <hr />
+                <br></br>
+                <PatientHistory history={history} />
+                <br></br>
+                <hr />
+              </div>
+            ))}
+          </div>
+        )}
+
+        { showHistory }
+
+        <SendCallNotes patientId={patientId} />
+        
+       </Container> 
+    );
+
+}
+
+export default CallNotesPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {/* <Typography variant="h4" gutterBottom>
              Call Notes
           </Typography>
 
@@ -190,14 +263,14 @@ function CallNotesPage() {
         >
           Get Call
         </Button>
-        {/* <Button
+        <Button
           type="directions"
           variant="contained"
           color="success"
           onClick={(e) => e.preventDefault()}
         >
           Directions
-        </Button> */}
+        </Button>
         <Button
           type="button"
           variant="contained"
@@ -209,33 +282,4 @@ function CallNotesPage() {
         <br></br>
         <br></br>
 
-      </form>
-
-        {showHistory && (
-          <div>
-            <Typography variant="h5" gutterBottom>
-              Patient History
-            </Typography>
-
-            {patientHistories.map((history) => (
-              <div key={history.id}>
-                <hr />
-                <br></br>
-                <PatientHistory history={history} />
-                <br></br>
-                <hr />
-
-              </div>
-            ))}
-          </div>
-        )}
-
-      { showHistory }
-
-              <SendCallNotes patientId={patientId} />
-      </Container>
-    );
-
-}
-
-export default CallNotesPage;
+      </form> */}
