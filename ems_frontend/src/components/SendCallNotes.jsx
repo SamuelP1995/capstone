@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, TextField, Button } from '@mui/material';
+import { Box, Card, Typography, TextField, Button, CardMedia, CardContent, CardActions, CardHeader } from '@mui/material';
 import axios from "axios";
 
 
@@ -46,60 +46,96 @@ function SendCallNotes({ patientId }) {
     }    
 
     return (
-        <Container maxWidth="lg">
-            <Typography variant="h4" gutterBottom>
-                Call Notes
-            </Typography>
+      <Box sx={{ variant: 'contained', color: 'sucess' }} >
+        <Card sx={{ }}> 
+          <CardHeader variant='h4'  title='Call Notes' />
+          <CardMedia>
 
-        <form>
-
-        <TextField
-          label="Call Notes"
-          variant="outlined"
-          fullWidth
-          multiline
-          rows={2}
-          value={sendData.callNotes}
-          onChange={(e) => setSendData({ ...sendData, callNotes: e.target.value })}
-        />
-        <TextField
-          label="Transport"
-          variant="outlined"
-          value={sendData.transport}
-          onChange={(e) => setSendData({ ...sendData, transport: e.target.value })}
-        />
-        <TextField
-          label="Date"
-          variant="outlined"
-          value={sendData.date}
-          onChange={(e) => setSendData({ ...sendData, date: e.target.value })}
-        />
-        <TextField
-          label="Time"
-          variant="outlined"
-          value={sendData.time}
-          onChange={(e) => setSendData({ ...sendData, time: e.target.value })}
-        />
-        {/* <TextField
-          label="Patient Id"
-          variant="outlined"
-          value={patientId}
-          disabled
-        /> */}
-        <br></br>
-        <Button
-          type="button"
-          variant="contained"
-          color="success"
-          onClick={handleFinishCall}
-        >
-          Clear From Call
-        </Button>
-
-        </form>
-
-        </Container>
+          </CardMedia>
+          <CardContent>
+            <TextField label="Call Notes" variant="outlined" fullWidth multiline rows={2} value={sendData.callNotes}
+            onChange={(e) => setSendData({ ...sendData, callNotes: e.target.value })} />
+            <TextField label="Transport" variant="outlined" value={sendData.transport}
+            onChange={(e) => setSendData({ ...sendData, transport: e.target.value })} />
+            <TextField label="Date" variant="outlined" value={sendData.date}
+            onChange={(e) => setSendData({ ...sendData, date: e.target.value })} />
+            <TextField label="Time" variant="outlined" value={sendData.time}
+            onChange={(e) => setSendData({ ...sendData, time: e.target.value })} />
+          </CardContent>
+          <CardActions>
+            <Button type="button" variant="contained" color="success" onClick={handleFinishCall} > Clear From Call </Button>
+          </CardActions>
+        </Card>
+      </Box>
+        
     );
 }
 
 export default SendCallNotes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <Container maxWidth="lg">
+//             <Typography variant="h4" gutterBottom>
+//                 Call Notes
+//             </Typography>
+
+//         <form>
+
+//         <TextField
+//           label="Call Notes"
+//           variant="outlined"
+//           fullWidth
+//           multiline
+//           rows={2}
+//           value={sendData.callNotes}
+//           onChange={(e) => setSendData({ ...sendData, callNotes: e.target.value })}
+//         />
+//         <TextField
+//           label="Transport"
+//           variant="outlined"
+//           value={sendData.transport}
+//           onChange={(e) => setSendData({ ...sendData, transport: e.target.value })}
+//         />
+//         <TextField
+//           label="Date"
+//           variant="outlined"
+//           value={sendData.date}
+//           onChange={(e) => setSendData({ ...sendData, date: e.target.value })}
+//         />
+//         <TextField
+//           label="Time"
+//           variant="outlined"
+//           value={sendData.time}
+//           onChange={(e) => setSendData({ ...sendData, time: e.target.value })}
+//         />
+//         <TextField
+//           label="Patient Id"
+//           variant="outlined"
+//           value={patientId}
+//           disabled
+//         />
+//         <br></br>
+//         <Button
+//           type="button"
+//           variant="contained"
+//           color="success"
+//           onClick={handleFinishCall}
+//         >
+//           Clear From Call
+//         </Button>
+
+//         </form>
+
+//         </Container>
