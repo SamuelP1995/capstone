@@ -1,8 +1,8 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Icon } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom'; 
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-
+import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
 
 function Navbar() {
 
@@ -19,13 +19,14 @@ function Navbar() {
 
 
   return (
-    <AppBar position="static" color ="success">
+    <AppBar position="static" color="success" >
       <Toolbar >
-          <LocalHospitalIcon fontSize='large'/>
+        <LocalHospitalIcon fontSize='large'/>
         <Typography variant="h6" component="div"  sx={{ flexGrow: 1 }}>
           EMS Ambulance Company
         </Typography>
-        <Button color="inherit" onClick={handleLogoutPage} > Logout </Button>
+        <IconButton onClick={handleLogoutPage}>  <ExitToAppRoundedIcon color='inherit' fontSize='large' /> </IconButton>
+        <Button color="inherit" onClick={handleLogoutPage} fontSize='large'> Logout </Button>
       </Toolbar>
     </AppBar>
   );

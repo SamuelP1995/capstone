@@ -46,9 +46,9 @@ function SendCallNotes({ patientId }) {
     }    
 
     return (
-      <Box sx={{ variant: 'contained', color: 'sucess' }} >
+      <Box sx={{ variant: 'outlined', bgcolor: 'success.main' }} >
         <Card sx={{ }}> 
-          <CardHeader variant='h4'  title='Call Notes' />
+          <CardHeader variant='h4'  title='Call Notes' subheader='Current Patient' />
           <CardMedia>
 
           </CardMedia>
