@@ -1,19 +1,21 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
-import { Link } from 'react-router-dom'; 
+import axios from 'axios';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
+import LogoutForm from './Logout';
 
 function Navbar() {
 
   const handleLogoutPage = async() => {
     try {
-      const response = await axios.get('http://localhost:8080/logout', {
+      <LogoutForm />
+      // const response = await axios.get('http://localhost:8081/logout', {
 
-      });
+      // });
 
     } catch (error) {
-      console.log('Login failed:', error);
+      console.log('Logout failed:', error);
     }
   }
 

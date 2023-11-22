@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
 
 
 
@@ -16,7 +16,26 @@ export default function LogoutForm() {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Card>
+      <CardHeader title='Logout' />
+      <CardMedia />
+      <CardContent>
+        <Typography title='Logout as User' />
+       </CardContent>
+      <CardActions>
+      <Button variant="contained" color="primary" onClick={handleLogout}> Logout </Button>
+      </CardActions>
+    </Card>
+  );
+}
+
+
+
+
+
+
+
+{/* <Container maxWidth="sm">
       <Typography variant="h4" gutterBottom>
         Logout Page
       </Typography>
@@ -26,8 +45,5 @@ export default function LogoutForm() {
       <Button variant="contained" color="primary" onClick={handleLogout}>
         Logout
       </Button>
-    </Container>
-  );
-}
-
+    </Container> */}
 
